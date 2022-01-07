@@ -31,7 +31,6 @@ def register(auth_details: AuthDetails):
         raise HTTPException(status_code=400, detail='Telegram already exists')
     hashed_password = auth_handler.get_password_hash(auth_details.password)
     mydb.users.insert_one({
-        'id': uuid.uuid1(),
         'username': auth_details.username,
         'password': hashed_password,
         'phone_number': auth_details.phone_number,

@@ -49,9 +49,9 @@ def login(loginDetails: LoginDetails):
     token = auth_handler.encode_token(user['username'])
     return { 
             'token': token,
-            'phone_number': user.phone_number, 
-            'username': user.username, 
-            'telegram': user.telegram 
+            'phone_number': user['phone_number'], 
+            'username': user['username'], 
+            'telegram': user['telegram'] 
             }
 
     

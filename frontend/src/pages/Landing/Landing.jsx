@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import { useCookies } from "react-cookie";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from '../../components/footer/Footer';
 
 export const Landing = () => {
   const [cookies] = useCookies(["userInfo"]);
@@ -48,6 +49,7 @@ export const Landing = () => {
           )}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

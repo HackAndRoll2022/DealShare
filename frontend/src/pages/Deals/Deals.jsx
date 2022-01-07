@@ -90,6 +90,30 @@ const C_LOGOS = [
   }
 ]
 
+const PAST_LOGOS = [
+  {
+    img: Marche,
+    type: 'Discount',
+    description: 'Christmas special: Get 15% off on any order!',
+    pax: '3',
+    deadline: '25 Dec 2021'
+  }, 
+  {
+    img: Kfc,
+    type: 'Discount',
+    description: 'Kick out $10 from your bill for any orders that exceed $25!',
+    pax: '2',
+    deadline: '31 Dec 2021'
+  },
+  {
+    img: Collins,
+    type: 'Freebie',
+    description: 'Redeem a free Ice Lemon Tea for any Chicken chop dishes!',
+    pax: '2',
+    deadline: '31 Dec 2021'
+  }
+]
+
 
 const Deals = () => {
 
@@ -146,9 +170,9 @@ const Deals = () => {
                 {
                   A_LOGOS.map((item, idx) => {
                     return (
-                    <Card style={{ width: '18rem' }}>
+                    <Card className="tw-shadow tw-shadow-teal-500/40 hover:tw-shadow-teal-500" style={{ width: '18rem' }}>
                     <Card.Img className="h-50" variant="top" src={item.img}/>
-                    <Card.Body>
+                    <Card.Body className="tw-bg-teal-200">
                       <Card.Title>{item.type}</Card.Title>
                       <Card.Text>
                         {item.description}
@@ -168,9 +192,9 @@ const Deals = () => {
               {
                   B_LOGOS.map((item, idx) => {
                     return (
-                    <Card style={{ width: '18rem' }}>
+                    <Card className="tw-shadow tw-shadow-teal-500/40 hover:tw-shadow-teal-500" style={{ width: '18rem' }}>
                     <Card.Img className="h-50" variant="top" src={item.img}/>
-                    <Card.Body>
+                    <Card.Body className="tw-bg-teal-200">
                       <Card.Title>{item.type}</Card.Title>
                       <Card.Text>
                         {item.description}
@@ -189,9 +213,9 @@ const Deals = () => {
               {
                   C_LOGOS.map((item, idx) => {
                     return (
-                    <Card style={{ width: '18rem' }}>
+                    <Card className="tw-shadow tw-shadow-teal-500/40 hover:tw-shadow-teal-500" style={{ width: '18rem' }}>
                     <Card.Img className="h-50" variant="top" src={item.img}/>
-                    <Card.Body>
+                    <Card.Body className="tw-bg-teal-200">
                       <Card.Title>{item.type}</Card.Title>
                       <Card.Text>
                         {item.description}
@@ -204,14 +228,50 @@ const Deals = () => {
                     </Card>
                     )
                   })
-                }
+              } 
 
               </div>
+              <Pagination>
+              <Pagination.First />
+              <Pagination.Prev />
+              <Pagination.Item>{1}</Pagination.Item>
+              <Pagination.Item>{2}</Pagination.Item>
+              <Pagination.Item>{3}</Pagination.Item>
+              <Pagination.Ellipsis />
+              <Pagination.Item>{10}</Pagination.Item>
+              <Pagination.Next />
+              <Pagination.Last />
+              </Pagination>
             </div>
           </Container>
           </Tab>
           <Tab eventKey="Past" title="Past">
-            <div style={{ display: "flex", width: "100%", height: "5%" }}>
+            <Container>
+          <div className="tw-flex tw-flex-col tw-gap-8 tw-mx-auto">
+          <div className="tw-flex tw-flex-row tw-gap-20 ">
+              {
+                  PAST_LOGOS.map((item, idx) => {
+                    return (
+                    <Card className="tw-shadow tw-shadow-amber-100/40 hover:tw-shadow-amber-600" style={{ width: '18rem' }}>
+                    <Card.Img className="h-50" variant="top" src={item.img}/>
+                    <Card.Body className="tw-bg-amber-100">
+                      <Card.Title>{item.type}</Card.Title>
+                      <Card.Text>
+                        {item.description}
+                      </Card.Text>
+                      <Button variant="primary">Check in!</Button>
+                    </Card.Body>
+                    <Card.Footer>
+                      <small className="text-muted">Deadline: <strong>{item.deadline} </strong></small>
+                    </Card.Footer>
+                    </Card>
+                    )
+                  })
+              } 
+            </div>
+            </div>
+            </Container>
+            {/* <div style={{ display: "flex", width: "100%", height: "5%" }}>
                 <DealCardList dealCardList={dealCardList} />
               </div>
               <div style={{ height: "5%", display: visible ? undefined : "none", backgroundColor: "red" }} >
@@ -232,36 +292,13 @@ const Deals = () => {
                     <Button onClick={addDeal}>Add deal</Button>
                   </div>
                 </div>
-              </div>
-              <Container />
+              </div> */}
+              {/* <Container /> */}
               <div className="tw-mt-20"></div>
-              <Pagination>
-                <Pagination.First />
-                <Pagination.Prev />
-                <Pagination.Item>{1}</Pagination.Item>
-                <Pagination.Item>{2}</Pagination.Item>
-                <Pagination.Item>{3}</Pagination.Item>
-                <Pagination.Ellipsis />
-                <Pagination.Item>{10}</Pagination.Item>
-                <Pagination.Next />
-                <Pagination.Last />
-              </Pagination>
-          </Tab>
-          <Tab eventKey="art" title="Art">
           </Tab>
         </Tabs>
         <div className="tw-mt-20"></div>
-          <Pagination>
-          <Pagination.First />
-          <Pagination.Prev />
-          <Pagination.Item>{1}</Pagination.Item>
-          <Pagination.Item>{2}</Pagination.Item>
-          <Pagination.Item>{3}</Pagination.Item>
-          <Pagination.Ellipsis />
-          <Pagination.Item>{10}</Pagination.Item>
-          <Pagination.Next />
-          <Pagination.Last />
-        </Pagination>
+          
         </section>
       </div>
     </div>

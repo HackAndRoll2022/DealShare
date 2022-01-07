@@ -72,15 +72,15 @@ def login(loginDetails: LoginDetails):
 def protected(username=Depends(auth_handler.auth_wrapper)):
     return { 'name': username }
 
-@app.websocket('/matching')
-async def websocket_endpoint(websocket: WebSocket):
-    print("Accepting Connection")
-    await websocket.accept()
-    print("Accepted")
-    while True:
-        try:
-            data = await websocket.receive_text()
-            print(data)
-        except:
-            pass
-            break
+# @app.websocket('/matching')
+# async def websocket_endpoint(websocket: WebSocket):
+#     print("Accepting Connection")
+#     await websocket.accept()
+#     print("Accepted")
+#     while True:
+#         try:
+#             data = await websocket.receive_text()
+#             print(data)
+#         except:
+#             pass
+#             break

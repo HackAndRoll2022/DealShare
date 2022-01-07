@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Container, Pagination, Tab, Tabs, Card, Button } from "react-bootstrap";
+import { Container, Pagination, Tab, Tabs, Card, Button, Modal, Spinner } from "react-bootstrap";
 import { Navigator } from "../../components/navbar/Navigator";
 import shark from '../../assets/shark.png'
 import Collins from '../../assets/deals/collins.png'
@@ -17,7 +17,6 @@ import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 import './deals.css'
-import { ArrowBarRight, ArrowRight } from "react-bootstrap-icons";
 
 const A_LOGOS = [
 {
@@ -115,6 +114,59 @@ const PAST_LOGOS = [
   }
 ]
 
+const MatchModal = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Check in!
+      </Button>
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header>
+          <Modal.Title>Finding relevant matches... </Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{display: 'flex', justifyContent:'center'}}>
+          <Spinner
+            className="spinner-body"
+            variant="primary"
+            animation={"border"}
+          />
+        </Modal.Body>
+      </Modal>
+    </>
+  );
+}
+
+const PastMatchesModal = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        View past matchees
+      </Button>
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header>
+          <Modal.Title>Past Matchees </Modal.Title>
+        </Modal.Header>
+        <Modal.Body >
+          <div className="tw-flex tw-flex-col">
+          <p> 1. Jogn Doe, <strong>98764963</strong></p>
+          <p> 2. Jane Di, <strong>85553963</strong></p>
+          <p> 3. Tim Jake, <strong>92556563</strong></p>
+          </div>
+        </Modal.Body>
+      </Modal>
+    </>
+  );
+}
 
 const Deals = () => {
 
@@ -183,7 +235,7 @@ const Deals = () => {
                       <Card.Text>
                         {item.description}
                       </Card.Text>
-                      <Button variant="primary">Check in!</Button>
+                      <MatchModal/>
                     </Card.Body>
                     <Card.Footer>
                       <small className="text-muted">Deadline: <strong>{item.deadline} </strong></small>
@@ -205,7 +257,7 @@ const Deals = () => {
                       <Card.Text>
                         {item.description}
                       </Card.Text>
-                      <Button variant="primary">Check in!</Button>
+                      <MatchModal/>
                     </Card.Body>
                     <Card.Footer>
                       <small className="text-muted">Deadline: <strong>{item.deadline} </strong></small>
@@ -226,7 +278,7 @@ const Deals = () => {
                       <Card.Text>
                         {item.description}
                       </Card.Text>
-                      <Button variant="primary">Check in!</Button>
+                      <MatchModal/>
                     </Card.Body>
                     <Card.Footer>
                       <small className="text-muted">Deadline: <strong>{item.deadline} </strong></small>
@@ -270,7 +322,7 @@ const Deals = () => {
                       <Card.Text>
                         {item.description}
                       </Card.Text>
-                      <Button variant="primary">Check in!</Button>
+                      <PastMatchesModal/>
                     </Card.Body>
                     <Card.Footer>
                       <small className="text-muted">Deadline: <strong>{item.deadline} </strong></small>

@@ -156,6 +156,7 @@ export default function Profile() {
         <TextField className="mb-5" id="name" label="Name" variant="outlined" size='medium' style={{ width: 500 }}/>
         <TextField className="mb-5" id="phone" label="Phone Number" variant="outlined" size='medium' style={{ width: 500 }}/>
         <TextField className="mb-5" id="tele" label="Telegram Handle" variant="outlined" size='medium' style={{ width: 500 }}/>
+        <TextField className="mb-5" id="location" label="Location" variant="outlined" size='medium' style={{ width: 500 }}/>
         <Button variant="contained" color="secondary" component="span" onClick={changeAllUIStates} style={{ width: 200}}>
             Edit
           </Button>

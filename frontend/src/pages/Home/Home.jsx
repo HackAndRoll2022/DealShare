@@ -32,7 +32,6 @@ export const Home = () => {
             Login
           </Button>
         </div>
-
         <Footer/>
       </div>
     </div>

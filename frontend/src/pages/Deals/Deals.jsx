@@ -11,6 +11,10 @@ import Marche from '../../assets/deals/marche.png'
 import Popeyes from '../../assets/deals/popeyes.png'
 import Shakeshack from '../../assets/deals/shakeshack.png'
 import Starbucks from '../../assets/deals/starbucks.png'
+import AddDealPage from "../AddDealPage/AddDealPage";
+import DealCardList from "../../components/DealCardList/DealCardList";
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 import './deals.css'
 import Footer from "../../components/footer/Footer";
@@ -89,6 +93,36 @@ const C_LOGOS = [
 
 
 const Deals = () => {
+
+  function toggleVisibility() {
+    setVisibility(!visible);
+  }
+
+  const [visible, setVisibility] = useState(false);
+
+  const [dealCardList, setDealCardList] = useState([]);
+  const [image, setImage] = useState("/images/avatar.jpg");
+  const nameRef = useRef();
+  const startDateRef = useRef();
+  const endDateRef = useRef();
+  const paxRef = useRef();
+  const infoRef = useRef();
+
+  function addImage(event) {
+    setImage(URL.createObjectURL(event.target.files[0]));
+  }
+
+  function addDeal() {
+    const name = nameRef.current.value;
+    const startDate = startDateRef.current.value;
+    const endDate = endDateRef.current.value;
+    const pax = paxRef.current.value;
+    const info = infoRef.current.value;
+    setDealCardList(deals => {
+      return [...deals, { id: name, imgSrc: image, name: name, startDate: startDate, endDate: endDate, pax: pax, info: info }];
+    })
+  }
+
   return (
     <>
     <div>
@@ -178,6 +212,41 @@ const Deals = () => {
           </Container>
           </Tab>
           <Tab eventKey="Past" title="Past">
+            <div style={{ display: "flex", width: "100%", height: "5%" }}>
+                <DealCardList dealCardList={dealCardList} />
+              </div>
+              <div style={{ height: "5%", display: visible ? undefined : "none", backgroundColor: "red" }} >
+                <input accept="image/*" id="icon-button-file-2"
+                  type="file" onChange={addImage} style={{ display: 'none' }} />
+                <label htmlFor="icon-button-file-2" style={{ width: "100%", height: "30px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                  <IconButton edge="start" color="primary" aria-label="upload picture" component="span" >
+                    <PhotoCamera />
+                  </IconButton>
+                </label >
+                <div>
+                  <input placeholder="Deal Name" style={{ border: "1px solid #000", width: "100%", marginTop: "10px", textAlign: "center" }} ref={nameRef} type="text" />
+                  <input placeholder="Start Date" style={{ border: "1px solid #000", width: "100%", marginTop: "10px", textAlign: "center" }} ref={startDateRef} type="text" />
+                  <input placeholder="End Date" style={{ border: "1px solid #000", width: "100%", marginTop: "10px", textAlign: "center" }} ref={endDateRef} type="text" />
+                  <input placeholder="Max pax" style={{ border: "1px solid #000", width: "100%", marginTop: "10px", textAlign: "center" }} ref={paxRef} type="text" />
+                  <input placeholder="Additional Info" style={{ border: "1px solid #000", width: "100%", marginTop: "10px", textAlign: "center" }} ref={infoRef} type="text" />
+                  <div style={{ display: "flex", justifyContent: 'center', alignContent: 'center', margin: "10px" }}>
+                    <Button onClick={addDeal}>Add deal</Button>
+                  </div>
+                </div>
+              </div>
+              <Container />
+              <div className="tw-mt-20"></div>
+              <Pagination>
+                <Pagination.First />
+                <Pagination.Prev />
+                <Pagination.Item>{1}</Pagination.Item>
+                <Pagination.Item>{2}</Pagination.Item>
+                <Pagination.Item>{3}</Pagination.Item>
+                <Pagination.Ellipsis />
+                <Pagination.Item>{10}</Pagination.Item>
+                <Pagination.Next />
+                <Pagination.Last />
+              </Pagination>
           </Tab>
           <Tab eventKey="art" title="Art">
           </Tab>

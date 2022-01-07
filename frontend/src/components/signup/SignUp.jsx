@@ -14,6 +14,7 @@ import {
   Envelope,
   KeyFill,
   BoxArrowInRight,
+  PhoneFill,
 } from "react-bootstrap-icons";
 import "./signup.css";
 import * as yup from "yup";
@@ -21,9 +22,9 @@ import { Formik } from "formik";
 import { DEV_API_URL } from "../../api";
 import { FailureAlert } from "../../components/FailureAlert/failurealert";
 
-const SignUp = () => {
+export const SignUp = () => {
   const [spin, setSpin] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("Username is taken");
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -31,7 +32,7 @@ const SignUp = () => {
   const submitHandler = async (e) => {
     setSpin(true);
     console.log(e);
-    await fetch(DEV_API_URL + "/auth/register", {
+    await fetch(DEV_API_URL + "/register", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -39,7 +40,7 @@ const SignUp = () => {
       },
       body: JSON.stringify({
         username: e.username,
-        email: e.email,
+        phone_number: e.phone,
         password: e.password,
       }),
     })
@@ -50,8 +51,8 @@ const SignUp = () => {
           handleShow();
           return result;
         } else {
-          setErrorMsg(result.message);
-          return result.message;
+          setErrorMsg(result.detail);
+          return result.detail;
         }
       })
       .then((res) => console.log(res))
@@ -67,14 +68,17 @@ const SignUp = () => {
       .string()
       .min(2, "Must be 2 characters or more")
       .required("Required"),
-    email: yup.string().email("Invalid email address").required("Required"),
+    phone: yup.number().test(
+      "maxDigits",
+      "Must be a valid registered SG HP with 8 digits",
+      (number) => String(number).length === 8
+    ).required("Required"),
     password: yup
       .string()
-      .min(8, "Must be 8 characters or more")
+      .min(6, "Must be 6 characters or more")
       .required("Required"),
     retypedPassword: yup
       .string()
-      .min(8, "Must be 8 characters or more")
       .oneOf([yup.ref("password"), null], "Passwords must match")
       .required("Required"),
   });
@@ -96,6 +100,7 @@ const SignUp = () => {
               initialValues={{
                 username: "",
                 email: "",
+                tele: "",
                 password: "",
                 retypedPassword: "",
                 validateOnMount: true,
@@ -114,7 +119,7 @@ const SignUp = () => {
                 <Form className="form" onSubmit={handleSubmit} noValidate>
                   {!spin ? (
                     <>
-                      <Form.Group className="mb-2" controlId="formUsername">
+                      <Form.Group className="mb-3" controlId="formUsername">
                         <Form.Label>Username</Form.Label>
                         <InputGroup hasValidation>
                           <InputGroup.Text id="inputGroupPrepend">
@@ -136,28 +141,27 @@ const SignUp = () => {
                         </InputGroup>
                       </Form.Group>
 
-                      <Form.Group className="mb-3" controlId="formEmail">
-                        <Form.Label>Email</Form.Label>
+                      <Form.Group className="mb-3" controlId="formPhone">
+                        <Form.Label>Phone Number</Form.Label>
                         <InputGroup hasValidation>
                           <InputGroup.Text id="inputGroupPrepend">
-                            <Envelope />
+                            <PhoneFill />
                           </InputGroup.Text>
                           <Form.Control
                             type="text"
-                            placeholder="Email"
+                            placeholder="Phone number"
                             aria-describedby="inputGroupPrepend"
-                            name="email"
+                            name="phone"
                             onChange={handleChange}
-                            value={values.email}
-                            isValid={touched.email && !errors.email}
-                            isInvalid={!!errors.email}
+                            value={values.phone}
+                            isValid={touched.phone && !errors.phone}
+                            isInvalid={!!errors.phone}
                           />
                           <Form.Control.Feedback type="invalid">
-                            {errors.email}
+                            {errors.phone}
                           </Form.Control.Feedback>
                         </InputGroup>
                       </Form.Group>
-
                       <Form.Group className="mb-3" controlId="formPassword">
                         <Form.Label>Password</Form.Label>
                         <InputGroup hasValidation>
@@ -179,7 +183,7 @@ const SignUp = () => {
                           </Form.Control.Feedback>
                         </InputGroup>
                         <Form.Text className="text-muted">
-                          Your password must be at least 8 characters long.
+                          Your password must be at least 6 characters long.
                         </Form.Text>
                       </Form.Group>
 
@@ -222,7 +226,7 @@ const SignUp = () => {
                       animation={"border"}
                     />
                   )}
-                  <>
+                  <div>
                     <Button
                       className="me-2"
                       variant="primary"
@@ -251,10 +255,10 @@ const SignUp = () => {
                         </Button>
                       </Modal.Footer>
                     </Modal>
-                  </>
-                  <Button variant="secondary" href="/">
-                    Back to Home
-                  </Button>
+                    <Button variant="secondary" href="/">
+                      Back to Home
+                    </Button>
+                  </div>
                 </Form>
               )}
             </Formik>
@@ -264,5 +268,3 @@ const SignUp = () => {
     </>
   );
 };
-
-export default SignUp;

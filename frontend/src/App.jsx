@@ -5,7 +5,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Deals from "./pages/Deals/Deals";
 import Footer from "./components/footer/Footer";
-import SignUp from "./components/signup/SignUp";
+import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
             <Route path="/profile" element = {<Profile />}></Route>
             <Route path="/deals" element={<Deals />} />
             <Route path="/login" element={ <Login />} />
-            <Route path="/signup" element={ <SignUp />} />
+            <Route path="/signup" element={ <Register />} />
           </Routes>
         </BrowserRouter>
       </div>

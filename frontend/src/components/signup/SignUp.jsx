@@ -24,7 +24,7 @@ import { FailureAlert } from "../../components/FailureAlert/failurealert";
 
 export const SignUp = () => {
   const [spin, setSpin] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("Username is taken");
+  const [errorMsg, setErrorMsg] = useState("");
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

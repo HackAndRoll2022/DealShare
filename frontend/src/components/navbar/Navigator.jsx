@@ -16,7 +16,7 @@ export const Navigator = () => {
             navbarScroll
           >
             <Nav.Link href="/profile">Profile</Nav.Link>
-            <Nav.Link href="/deals">Deals</Nav.Link>
+            <Nav.Link href="/home">Deals</Nav.Link>
           </Nav>
           <Button variant="outline-primary" href="/login" className="tw-mr-2">
             Login

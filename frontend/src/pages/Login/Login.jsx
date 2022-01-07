@@ -1,15 +1,16 @@
 import React from "react";
 import { Navigator } from "../../components/navbar/Navigator";
+import { LoginForm } from "../../components/login/LoginForm";
 
-export const Home = () => {
+export const Login = () => {
   return (
     <div>
       <Navigator />
       <div className="tw-h-screen tw-flex tw-flex-col">
-        <h1> Home Page Deals </h1>
+        <LoginForm />
       </div>
     </div>
   );
 };
 
-export default Home;
+export default Login;

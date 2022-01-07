@@ -2,6 +2,7 @@ import React from "react";
 import { Navigator } from "../../components/navbar/Navigator";
 import teamwork from "../../assets/teamwork.svg";
 import { Button } from "react-bootstrap";
+import Footer from '../../components/footer/Footer';
 
 export const Home = () => {
   return (
@@ -31,6 +32,8 @@ export const Home = () => {
             Login
           </Button>
         </div>
+
+        <Footer/>
       </div>
     </div>
   );

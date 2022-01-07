@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react'
 // import {InputGroup} from "react-bootstrap";
-import { TextInput } from '@sanity/ui'
+// import { TextInput } from '@sanity/ui'
 import { Navigator } from "../../components/navbar/Navigator";
 import './Profile.css';
 import Button from '@material-ui/core/Button';

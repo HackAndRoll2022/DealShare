@@ -14,7 +14,7 @@ const Deals = () => {
     setVisibility(!visible);
   }
 
-  const [visible, setVisibility] = useState(true);
+  const [visible, setVisibility] = useState(false);
 
   const [dealCardList, setDealCardList] = useState([]);
   const [image, setImage] = useState("/images/avatar.jpg");

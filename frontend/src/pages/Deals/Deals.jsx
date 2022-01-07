@@ -221,7 +221,7 @@ const Deals = () => {
             <div className="tw-flex tw-flex-col tw-gap-8 tw-mx-auto">
               <div className="tw-flex tw-flex-col tw-justify-center tw-items-center">
                 <p className="tw-font-semibold tw-text-m" > Missing out on any irresistable deals? Let's get right back into the game! </p>
-                <Button variant="outline-success" size="sm"> Create deal!</Button>
+                <Button variant="outline-success" size="sm" href="/add"> Create deal!</Button>
               </div>
             
               <div className="tw-flex tw-flex-row tw-gap-20 ">

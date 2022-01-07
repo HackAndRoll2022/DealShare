@@ -7,6 +7,7 @@ import Deals from "./pages/Deals/Deals";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
 import Error from "./pages/Error/Error";
+import AddDealPage from "./pages/AddDealPage/AddDealPage";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Register />} />
+            <Route path="/add" element={<AddDealPage />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>

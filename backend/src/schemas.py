@@ -2,11 +2,15 @@ from datetime import datetime, time, timedelta
 from typing import List, Optional
 from pydantic import BaseModel
 
-class AuthDetails(BaseModel):
+class RegisterDetails(BaseModel):
     username: str
     password: str
     telegram: Optional[str]
     phone_number: int
+    
+class LoginDetails(BaseModel):
+    username: str
+    password: str
 
 class User(BaseModel):
     id: int

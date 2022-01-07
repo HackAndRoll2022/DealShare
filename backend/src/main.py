@@ -1,7 +1,7 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, WebSocket
 from pymongo import MongoClient
 from .auth import AuthHandler
-from .schemas import AuthDetails, User
+from .schemas import RegisterDetails, LoginDetails, User
 from .config import mongodb_uri
 import uuid
 
@@ -20,7 +20,7 @@ def root():
     return "Hello World"
 
 @app.post('/register', status_code=201)
-def register(auth_details: AuthDetails):
+def register(auth_details: RegisterDetails):
     if users.find_one({"username": auth_details.username}):
         raise HTTPException(status_code=400, detail='Username is taken')
     if users.find_one({"phone_number": auth_details.phone_number}):
@@ -40,10 +40,10 @@ def register(auth_details: AuthDetails):
 
 
 @app.post('/login')
-def login(username: str, password: str):
-    user = users.find_one({"username": username})
+def login(loginDetails: LoginDetails):
+    user = users.find_one({"username": loginDetails.username})
     
-    if (user is None) or (not auth_handler.verify_password(password, user['password'])):
+    if (user is None) or (not auth_handler.verify_password(loginDetails.password, user['password'])):
         raise HTTPException(status_code=401, detail='Invalid username and/or password')
     
     token = auth_handler.encode_token(user['username'])
@@ -58,3 +58,16 @@ def login(username: str, password: str):
 @app.get('/protected')
 def protected(username=Depends(auth_handler.auth_wrapper)):
     return { 'name': username }
+
+@app.websocket('/matching')
+async def websocket_endpoint(websocket: WebSocket):
+    print("Accepting Connection")
+    await websocket.accept()
+    print("Accepted")
+    while True:
+        try:
+            data = await websocket.receive_text()
+            print(data)
+        except:
+            pass
+            break

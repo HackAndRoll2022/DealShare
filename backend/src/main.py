@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException
 from .auth import AuthHandler
-from .schemas import AuthDetails
+from .schemas import AuthDetails, User
 
 app = FastAPI()
 

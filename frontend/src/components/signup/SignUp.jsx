@@ -22,9 +22,9 @@ import { Formik } from "formik";
 import { DEV_API_URL } from "../../api";
 import { FailureAlert } from "../../components/FailureAlert/failurealert";
 
-const SignUp = () => {
+export const SignUp = () => {
   const [spin, setSpin] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("Username is taken");
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -32,7 +32,7 @@ const SignUp = () => {
   const submitHandler = async (e) => {
     setSpin(true);
     console.log(e);
-    await fetch(DEV_API_URL + "/auth/register", {
+    await fetch(DEV_API_URL + "/register", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -40,9 +40,8 @@ const SignUp = () => {
       },
       body: JSON.stringify({
         username: e.username,
-        phone: e.phone,
+        phone_number: e.phone,
         password: e.password,
-        tele: e.tele
       }),
     })
       .then(async (res) => {
@@ -52,8 +51,8 @@ const SignUp = () => {
           handleShow();
           return result;
         } else {
-          setErrorMsg(result.message);
-          return result.message;
+          setErrorMsg(result.detail);
+          return result.detail;
         }
       })
       .then((res) => console.log(res))
@@ -69,7 +68,6 @@ const SignUp = () => {
       .string()
       .min(2, "Must be 2 characters or more")
       .required("Required"),
-    // email: yup.string().email("Invalid email address").required("Required"),
     phone: yup.number().test(
       "maxDigits",
       "Must be a valid registered SG HP with 8 digits",
@@ -77,11 +75,10 @@ const SignUp = () => {
     ).required("Required"),
     password: yup
       .string()
-      .min(8, "Must be 8 characters or more")
+      .min(6, "Must be 6 characters or more")
       .required("Required"),
     retypedPassword: yup
       .string()
-      .min(8, "Must be 8 characters or more")
       .oneOf([yup.ref("password"), null], "Passwords must match")
       .required("Required"),
   });
@@ -165,29 +162,6 @@ const SignUp = () => {
                           </Form.Control.Feedback>
                         </InputGroup>
                       </Form.Group>
-
-                      {/* <Form.Group className="mb-3" controlId="formEmail">
-                        <Form.Label>Email</Form.Label>
-                        <InputGroup hasValidation>
-                          <InputGroup.Text id="inputGroupPrepend">
-                            <Envelope />
-                          </InputGroup.Text>
-                          <Form.Control
-                            type="text"
-                            placeholder="Email"
-                            aria-describedby="inputGroupPrepend"
-                            name="email"
-                            onChange={handleChange}
-                            value={values.email}
-                            isValid={touched.email && !errors.email}
-                            isInvalid={!!errors.email}
-                          />
-                          <Form.Control.Feedback type="invalid">
-                            {errors.email}
-                          </Form.Control.Feedback>
-                        </InputGroup>
-                      </Form.Group> */}
-
                       <Form.Group className="mb-3" controlId="formPassword">
                         <Form.Label>Password</Form.Label>
                         <InputGroup hasValidation>
@@ -209,7 +183,7 @@ const SignUp = () => {
                           </Form.Control.Feedback>
                         </InputGroup>
                         <Form.Text className="text-muted">
-                          Your password must be at least 8 characters long.
+                          Your password must be at least 6 characters long.
                         </Form.Text>
                       </Form.Group>
 
@@ -238,28 +212,6 @@ const SignUp = () => {
                             {errors.retypedPassword}
                           </Form.Control.Feedback>
                         </InputGroup>
-
-                      {/* <Form.Group className="mb-3" controlId="formTele">
-                        <Form.Label>Telegram</Form.Label>
-                        <InputGroup hasValidation>
-                          <InputGroup.Text id="inputGroupPrepend">
-                            <PhoneFill />
-                          </InputGroup.Text>
-                          <Form.Control
-                            type="text"
-                            placeholder="Telegram handle"
-                            aria-describedby="inputGroupPrepend"
-                            name="tele"
-                            onChange={handleChange}
-                            value={values.tele}
-                            isValid={!errors.tele}
-                            isInvalid={!!errors.tele}
-                          />
-                          <Form.Control.Feedback type="invalid">
-                            {errors.tele}
-                          </Form.Control.Feedback>
-                        </InputGroup>
-                      </Form.Group> */}
                       </Form.Group>
                       {errorMsg !== "" ? (
                         <FailureAlert errorMsg={errorMsg} />
@@ -274,7 +226,7 @@ const SignUp = () => {
                       animation={"border"}
                     />
                   )}
-                  <>
+                  <div>
                     <Button
                       className="me-2"
                       variant="primary"
@@ -303,10 +255,10 @@ const SignUp = () => {
                         </Button>
                       </Modal.Footer>
                     </Modal>
-                  </>
-                  <Button variant="secondary" href="/">
-                    Back to Home
-                  </Button>
+                    <Button variant="secondary" href="/">
+                      Back to Home
+                    </Button>
+                  </div>
                 </Form>
               )}
             </Formik>
@@ -316,5 +268,3 @@ const SignUp = () => {
     </>
   );
 };
-
-export default SignUp;

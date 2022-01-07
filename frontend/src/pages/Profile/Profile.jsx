@@ -6,6 +6,8 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import IconButton from '@material-ui/core/IconButton';
 import Footer from '../../components/footer/Footer';
 import AddDealPage from "../AddDealPage/AddDealPage";
+import { InputAdornment, TextField } from '@material-ui/core';
+import { Person } from 'react-bootstrap-icons';
 
 export default function Profile() {
   const [image, setImage] = useState("/images/avatar.jpg");
@@ -105,7 +107,7 @@ export default function Profile() {
         width: 800,
         flexWrap: 'wrap',
       }}>
-        
+{/*         
         <div style={{marginBottom:"15px", marginTop:"15px", display:"flex", justifyContent:"center", alignItems:"center"}}>
           <img src={image} alt="avatar" />
         </div>
@@ -131,8 +133,32 @@ export default function Profile() {
           <Button variant="contained" color="secondary" component="span" onClick={changeAllUIStates}>
             Edit
           </Button>
-        </div>
+        </div> */}
         {/* <AddDealPage/> */}
+      </div>
+      <div className="tw-flex tw-flex-col tw-justify-center tw-items-center">
+      <div style={{marginBottom:"15px", marginTop:"15px", display:"flex", justifyContent:"center", alignItems:"center"}}>
+          <img src={image} alt="avatar" />
+        </div>
+        <input
+          type="file"
+          accept="image/*"
+          style={{ display: 'none' }}
+          id="contained-button-file"
+        />
+        <input accept="image/*" id="icon-button-file"
+          type="file" onChange={handleChange} disabled={state} style={{ display: 'none' }} />
+        <label htmlFor="icon-button-file">
+          <IconButton edge="start" color="primary" aria-label="upload picture" component="span" disabled={state} >
+            <PhotoCamera style={{ height: "25%", width: "25%"}} />
+          </IconButton>
+        </label>
+        <TextField className="mb-5" id="name" label="Name" variant="outlined" size='medium' style={{ width: 500 }}/>
+        <TextField className="mb-5" id="phone" label="Phone Number" variant="outlined" size='medium' style={{ width: 500 }}/>
+        <TextField className="mb-5" id="tele" label="Telegram Handle" variant="outlined" size='medium' style={{ width: 500 }}/>
+        <Button variant="contained" color="secondary" component="span" onClick={changeAllUIStates} style={{ width: 200}}>
+            Edit
+          </Button>
       </div>
       <Footer/>
     </>

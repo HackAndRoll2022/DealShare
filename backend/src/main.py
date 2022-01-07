@@ -41,11 +41,7 @@ def register(auth_details: AuthDetails):
 
 @app.post('/login')
 def login(username: str, password: str):
-    user: User = None
-    for x in users:
-        if x['username'] == username:
-            user = x
-            break
+    user = users.find_one({"username": username})
     
     if (user is None) or (not auth_handler.verify_password(password, user['password'])):
         raise HTTPException(status_code=401, detail='Invalid username and/or password')

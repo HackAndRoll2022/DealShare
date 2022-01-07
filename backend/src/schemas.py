@@ -5,12 +5,15 @@ from pydantic import BaseModel
 class AuthDetails(BaseModel):
     username: str
     password: str
+    telegram: Optional[str]
+    phone_number: int
 
 class User(BaseModel):
     id: int
     username: str
     password: str
-    phone_number: Optional[int]
+    telegram: Optional[str]
+    phone_number: int
     
 class Combo(BaseModel):
     id: int

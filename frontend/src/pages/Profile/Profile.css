@@ -1,0 +1,17 @@
+.Profile {
+    display: flex;
+    justify-content: 'center';
+    align-items: 'center';
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:20vh;  
+}
+
+.input-field {
+    width: 25%;
+    height: 25%;
+}

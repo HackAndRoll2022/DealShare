@@ -16,10 +16,6 @@ const App = () => {
             <Route exact path="/" element={<Home />} />
             <Route path="/profile" element = {<Profile />}></Route>
             <Route path="/deals" element={<Deals />} />
-            {/* <Route
-            path="/nft"
-            component={({ history }) => <Login history={history} />}
-          /> */}
             <Route path="/login" element={ <Login />} />
             <Route path="/signup" element={ <SignUp />} />
           </Routes>

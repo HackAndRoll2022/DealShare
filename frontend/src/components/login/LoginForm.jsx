@@ -46,7 +46,7 @@ import {
 } from "react-bootstrap";
 import { Key, PersonCircle } from "react-bootstrap-icons";
 import login from "../../assets/login.svg";
-import "./login.css";
+import "./loginForm.css";
 import * as yup from "yup";
 import { Formik } from "formik";
 import { useState } from "react";
@@ -55,7 +55,7 @@ import { FailureAlert } from "../../components/FailureAlert/failurealert";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 
-export const Login = ({ history }) => {
+export const LoginForm = ({ history }) => {
   const [spin, setSpin] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [cookies, setCookie] = useCookies(["userInfo"]);
@@ -76,7 +76,7 @@ export const Login = ({ history }) => {
   const submitHandler = async (e) => {
     setSpin(true);
 
-    await fetch(DEV_API_URL + "/auth/login", {
+    await fetch(DEV_API_URL + "/login", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -234,6 +234,4 @@ export const Login = ({ history }) => {
     </>
   );
 };
-
-export default Login;
 

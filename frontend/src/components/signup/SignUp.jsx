@@ -40,8 +40,9 @@ const SignUp = () => {
       },
       body: JSON.stringify({
         username: e.username,
-        e: e.phone,
+        phone: e.phone,
         password: e.password,
+        tele: e.tele
       }),
     })
       .then(async (res) => {

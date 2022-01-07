@@ -1,0 +1,13 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Set up a virtual environment for the project:  \r `python -m venv virtualenv`",
+  "main": "index.js",
+  "scripts": {
+    "init": "pip install -r requirements.txt",
+    "dev": "uvicorn src.main:app --reload",
+    "start": "uvicorn src.main:app"
+  },
+  "author": "",
+  "license": "ISC"
+}

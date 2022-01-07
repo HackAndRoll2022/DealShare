@@ -1,10 +1,13 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import { Login } from "./components/login/Login";
-import GhostMarketplace from "./pages/NFT/GhostMarketplace";
-import Footer from "./components/footer/Footer";
-import SignUp from "./components/signup/SignUp";
+import Landing from "./pages/Landing/Landing";
+import Login from "./pages/Login/Login";
+import Deals from "./pages/Deals/Deals";
+// import Footer from "./components/footer/Footer";
+import Register from "./pages/Register/Register";
+import Profile from "./pages/Profile/Profile";
+import Error from "./pages/Error/Error";
+import AddDealPage from "./pages/AddDealPage/AddDealPage";
 
 const App = () => {
   return (
@@ -12,18 +15,17 @@ const App = () => {
       <div>
         <BrowserRouter>
           <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/nft" element={<GhostMarketplace />} />
-            {/* <Route
-            path="/nft"
-            component={({ history }) => <Login history={history} />}
-          /> */}
-            <Route path="/login" element={ <Login />} />
-            <Route path="/signup" element={ <SignUp />} />
+            <Route exact path="/" element={<Landing />} />
+            <Route path="/home" element={<Deals />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Register />} />
+            <Route path="/add" element={<AddDealPage />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

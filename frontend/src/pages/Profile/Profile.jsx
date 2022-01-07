@@ -6,7 +6,7 @@ import './Profile.css';
 import Button from '@material-ui/core/Button';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import IconButton from '@material-ui/core/IconButton';
-
+import DealCard from "../../components/DealCard/DealCard";
 
 export default function Profile() {
   const [image, setImage] = useState("/images/avatar.jpg");
@@ -106,7 +106,7 @@ export default function Profile() {
         width: 400,
         flexWrap: 'wrap',
       }}>
-
+        <DealCard/>
         <div style={{ width: '100%', float: 'left', margin: '20px' }}>
           <img src={image} alt="avatar" />
         </div>

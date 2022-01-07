@@ -10,6 +10,7 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",
     "http://localhost:5000",
+    "https://dealshare22.herokuapp.com",
 ]
 
 app.add_middleware(

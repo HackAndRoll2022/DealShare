@@ -1,4 +1,4 @@
-import React, { useState, useRef} from "react";
+import React, { useState, useRef } from "react";
 import { Container, Pagination, Tab, Tabs, Card, Button } from "react-bootstrap";
 import { Navigator } from "../../components/navbar/Navigator";
 import shark from '../../assets/shark.png'

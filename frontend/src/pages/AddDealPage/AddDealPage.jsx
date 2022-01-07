@@ -3,7 +3,7 @@ import DealCardList from "../../components/DealCardList/DealCardList";
 import { Button } from "react-bootstrap"
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import { Hidden } from '@material-ui/core';
+// import { Hidden } from '@material-ui/core';
 
 export default function AddDealPage() {
     const [dealCardList, setDealCardList] = useState([]);

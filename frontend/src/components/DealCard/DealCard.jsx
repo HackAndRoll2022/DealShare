@@ -1,10 +1,9 @@
-import {React, useState} from 'react'
+import React, { useState } from "react";
 import "./DealCard.css"
 import Button from '@material-ui/core/Button';
 import {Card} from 'react-bootstrap';
 
 export default function DealCard({dealCard}) {
-    const [dealName, setDealName] = useState();
     
     return (
         <Card className="DealCard">

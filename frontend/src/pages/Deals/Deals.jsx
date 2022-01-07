@@ -90,6 +90,7 @@ const C_LOGOS = [
 
 const Deals = () => {
   return (
+    <>
     <div>
       <Navigator />
       <div className="tw-h-screen tw-flex tw-flex-col">
@@ -196,6 +197,7 @@ const Deals = () => {
         </section>
       </div>
     </div>
+    </>
   );
 };
 

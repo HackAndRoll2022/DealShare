@@ -5,6 +5,7 @@ import { Login } from "./components/login/Login";
 import GhostMarketplace from "./pages/NFT/GhostMarketplace";
 import Footer from "./components/footer/Footer";
 import SignUp from "./components/signup/SignUp";
+import Profile from "./pages/Profile/Profile";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/nft" element={<GhostMarketplace />} />
+            <Route path="/profile" element = {<Profile />}></Route>
             {/* <Route
             path="/nft"
             component={({ history }) => <Login history={history} />}

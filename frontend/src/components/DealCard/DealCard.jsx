@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./DealCard.css"
 import Button from '@material-ui/core/Button';
 import {Card} from 'react-bootstrap';

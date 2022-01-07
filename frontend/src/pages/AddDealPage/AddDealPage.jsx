@@ -1,4 +1,4 @@
-import { React, useState, useRef } from 'react'
+import React, { useState, useRef } from "react";
 import DealCardList from "../../components/DealCardList/DealCardList";
 import { Button } from "react-bootstrap"
 import IconButton from '@material-ui/core/IconButton';

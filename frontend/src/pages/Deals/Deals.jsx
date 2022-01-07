@@ -17,6 +17,7 @@ import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 import './deals.css'
+import { ArrowBarRight, ArrowRight } from "react-bootstrap-icons";
 
 const A_LOGOS = [
 {
@@ -159,13 +160,18 @@ const Deals = () => {
           <p className="tw-text-bold tw-mb-10 tw-text-blue-500  tw-text-lg" > We've got all the best deals lined up for your easy scrolling right below. Check them out just right below here!</p>
           </div>
           <div className="mt-5">
-          <img className="img-fluid tw-animate-bounce" src={shark} alt="shark" width={150} height={150} />
+          <img className="img-fluid tw-animate-bounce" src={shark} alt="shark" width={200} height={200} />
           </div>
           </div>
           <Tabs fill defaultActiveKey="Current" id="uncontrolled-tab-example" className="tab-class" >
           <Tab eventKey="Current" title="Current">
           <Container> 
             <div className="tw-flex tw-flex-col tw-gap-8 tw-mx-auto">
+              <div className="tw-flex tw-flex-col tw-justify-center tw-items-center">
+                <p className="tw-font-semibold tw-text-m" > Missing out on any irresistable deals? Let's get right back into the game! </p>
+                <Button variant="outline-success" size="sm"> Create deal!</Button>
+              </div>
+            
               <div className="tw-flex tw-flex-row tw-gap-20 ">
                 {
                   A_LOGOS.map((item, idx) => {
@@ -248,7 +254,12 @@ const Deals = () => {
           <Tab eventKey="Past" title="Past">
             <Container>
           <div className="tw-flex tw-flex-col tw-gap-8 tw-mx-auto">
+          <div className="tw-flex tw-flex-col tw-justify-center tw-items-center">
+                <p className="tw-font-semibold tw-text-m" > Missing out on any irresistable deals? Let's get right back into the game! </p>
+                <Button variant="outline-success" size="sm"> Create deal!</Button>
+              </div>
           <div className="tw-flex tw-flex-row tw-gap-20 ">
+            
               {
                   PAST_LOGOS.map((item, idx) => {
                     return (

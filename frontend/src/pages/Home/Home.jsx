@@ -26,7 +26,7 @@ export const Home = () => {
             className="tw-mt-4 tw-object-none tw-object-center"
             variant="outline-dark"
             size="sm"
-            href="/nft"
+            href="/login"
           >
             Login
           </Button>

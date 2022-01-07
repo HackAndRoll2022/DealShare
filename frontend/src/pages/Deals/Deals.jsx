@@ -1,9 +1,9 @@
 import React from "react";
 import { Tab, Tabs } from "react-bootstrap";
 import { Navigator } from "../../components/navbar/Navigator";
-import './ghostmarketplace.css'
+import './deals.css'
 
-const GhostMarketplace = () => {
+const Deals = () => {
   return (
     <div>
       <Navigator />
@@ -24,4 +24,4 @@ const GhostMarketplace = () => {
   );
 };
 
-export default GhostMarketplace;
+export default Deals;

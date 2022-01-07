@@ -23,10 +23,8 @@ def root():
 def register(auth_details: AuthDetails):
     if users.find_one({"username": auth_details.username}):
         raise HTTPException(status_code=400, detail='Username is taken')
-    print('------------------------- a')
-    if users.find_one({"phone_number": auth_details.phone_number}) != 0:
+    if users.find_one({"phone_number": auth_details.phone_number}):
         raise HTTPException(status_code=400, detail='Phone number already exists')
-    print('------------------------- b')
     if (auth_details.telegram != '' and
         auth_details.telegram != None and
         users.find_one({"telegram": auth_details.telegram})):

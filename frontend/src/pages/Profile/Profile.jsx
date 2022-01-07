@@ -1,12 +1,11 @@
 import { React, useState, useEffect } from 'react'
 // import {InputGroup} from "react-bootstrap";
-import { TextInput } from '@sanity/ui'
 import { Navigator } from "../../components/navbar/Navigator";
 import './Profile.css';
 import Button from '@material-ui/core/Button';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import IconButton from '@material-ui/core/IconButton';
-import DealCard from "../../components/DealCard/DealCard";
+import AddDealPage from "../AddDealPage/AddDealPage";
 
 export default function Profile() {
   const [image, setImage] = useState("/images/avatar.jpg");
@@ -103,11 +102,11 @@ export default function Profile() {
       <div style={{
         display: 'block',
         margin: 'auto',
-        width: 400,
+        width: 800,
         flexWrap: 'wrap',
       }}>
-        <DealCard/>
-        <div style={{ width: '100%', float: 'left', margin: '20px' }}>
+        
+        <div style={{marginBottom:"15px", marginTop:"15px", display:"flex", justifyContent:"center", alignItems:"center"}}>
           <img src={image} alt="avatar" />
         </div>
         <input
@@ -118,7 +117,7 @@ export default function Profile() {
         />
         <input accept="image/*" id="icon-button-file"
           type="file" onChange={handleChange} disabled={state} style={{ display: 'none' }} />
-        <label htmlFor="icon-button-file" >
+        <label htmlFor="icon-button-file" style={{width:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
           <IconButton edge="start" color="primary" aria-label="upload picture" component="span" disabled={state} >
             <PhotoCamera style={{
               height: "25%", width: "25%"
@@ -128,11 +127,12 @@ export default function Profile() {
         <label style={{width: "100%", margin:"15px"}}><input value={name} onChange={handleNameTextInput} placeholder="Name" style={{ border: "1px solid #000", display:"flex", textAlign:"center", height:"40px", width:"100%" }} type="text" disabled={state}/></label>
         <label style={{width: "100%", margin:"15px"}}><input value={phone} onChange={handlePhoneTextInput} placeholder="Phone" style={{ border: "1px solid #000", textAlign:"center", height:"40px", width:"100%" }} type="text" disabled={state}/></label>
         <label style={{width: "100%", margin:"15px"}}><input value={telegram} onChange={handleTelegramTextInput} placeholder="Telegram Handle" style={{ border: "1px solid #000", textAlign:"center", height:"40px", width:"100%" }} type="text" disabled={state}/></label>
-        <div className="center" style={{width: "400px", margin:"15px"}}>
+        <div style={{width:"100%", margin:"15px", display:"flex", justifyContent:"center", alignItems:"center"}}>
           <Button variant="contained" color="secondary" component="span" onClick={changeAllUIStates}>
             Edit
           </Button>
         </div>
+        <AddDealPage/>
       </div>
     </>
   );

@@ -1,10 +1,10 @@
 import React from 'react'
 import DealCard from "../DealCard/DealCard"
 
-export default function DealCardList({DealCardList}) {
+export default function DealCardList({dealCardList}) {
     return (
-        DealCardList.map(dealCard =>{
-            return <DealCard dealCard = {dealCard}/>
+        dealCardList.map(dealCard =>{
+            return <DealCard key={dealCard.id} dealCard = {dealCard}/>
         })
     )
 }

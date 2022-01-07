@@ -4,6 +4,7 @@ import './Profile.css';
 import Button from '@material-ui/core/Button';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import IconButton from '@material-ui/core/IconButton';
+import Footer from '../../components/footer/Footer';
 import AddDealPage from "../AddDealPage/AddDealPage";
 
 export default function Profile() {
@@ -133,6 +134,7 @@ export default function Profile() {
         </div>
         {/* <AddDealPage/> */}
       </div>
+      <Footer/>
     </>
   );
 }

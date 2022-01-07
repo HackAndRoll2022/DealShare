@@ -3,12 +3,11 @@ from fastapi import HTTPException, Security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
-import config
+from .config import secret
 
 class AuthHandler():
     security = HTTPBearer()
     pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-    secret = config.SECRET
 
     def get_password_hash(self, password):
         return self.pwd_context.hash(password)
@@ -24,13 +23,13 @@ class AuthHandler():
         }
         return jwt.encode(
             payload,
-            self.secret,
+            secret,
             algorithm='HS256'
         )
 
     def decode_token(self, token):
         try:
-            payload = jwt.decode(token, self.secret, algorithms=['HS256'])
+            payload = jwt.decode(token, secret, algorithms=['HS256'])
             return payload['sub']
         except jwt.ExpiredSignatureError:
             raise HTTPException(status_code=401, detail='Signature has expired')

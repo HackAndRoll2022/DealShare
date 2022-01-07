@@ -14,6 +14,7 @@ import {
   Envelope,
   KeyFill,
   BoxArrowInRight,
+  PhoneFill,
 } from "react-bootstrap-icons";
 import "./signup.css";
 import * as yup from "yup";
@@ -39,8 +40,9 @@ const SignUp = () => {
       },
       body: JSON.stringify({
         username: e.username,
-        email: e.email,
+        phone: e.phone,
         password: e.password,
+        tele: e.tele
       }),
     })
       .then(async (res) => {
@@ -67,7 +69,12 @@ const SignUp = () => {
       .string()
       .min(2, "Must be 2 characters or more")
       .required("Required"),
-    email: yup.string().email("Invalid email address").required("Required"),
+    // email: yup.string().email("Invalid email address").required("Required"),
+    phone: yup.number().test(
+      "maxDigits",
+      "Must be a valid registered SG HP with 8 digits",
+      (number) => String(number).length === 8
+    ).required("Required"),
     password: yup
       .string()
       .min(8, "Must be 8 characters or more")
@@ -96,6 +103,7 @@ const SignUp = () => {
               initialValues={{
                 username: "",
                 email: "",
+                tele: "",
                 password: "",
                 retypedPassword: "",
                 validateOnMount: true,
@@ -114,7 +122,7 @@ const SignUp = () => {
                 <Form className="form" onSubmit={handleSubmit} noValidate>
                   {!spin ? (
                     <>
-                      <Form.Group className="mb-2" controlId="formUsername">
+                      <Form.Group className="mb-3" controlId="formUsername">
                         <Form.Label>Username</Form.Label>
                         <InputGroup hasValidation>
                           <InputGroup.Text id="inputGroupPrepend">
@@ -136,7 +144,29 @@ const SignUp = () => {
                         </InputGroup>
                       </Form.Group>
 
-                      <Form.Group className="mb-3" controlId="formEmail">
+                      <Form.Group className="mb-3" controlId="formPhone">
+                        <Form.Label>Phone Number</Form.Label>
+                        <InputGroup hasValidation>
+                          <InputGroup.Text id="inputGroupPrepend">
+                            <PhoneFill />
+                          </InputGroup.Text>
+                          <Form.Control
+                            type="text"
+                            placeholder="Phone number"
+                            aria-describedby="inputGroupPrepend"
+                            name="phone"
+                            onChange={handleChange}
+                            value={values.phone}
+                            isValid={touched.phone && !errors.phone}
+                            isInvalid={!!errors.phone}
+                          />
+                          <Form.Control.Feedback type="invalid">
+                            {errors.phone}
+                          </Form.Control.Feedback>
+                        </InputGroup>
+                      </Form.Group>
+
+                      {/* <Form.Group className="mb-3" controlId="formEmail">
                         <Form.Label>Email</Form.Label>
                         <InputGroup hasValidation>
                           <InputGroup.Text id="inputGroupPrepend">
@@ -156,7 +186,7 @@ const SignUp = () => {
                             {errors.email}
                           </Form.Control.Feedback>
                         </InputGroup>
-                      </Form.Group>
+                      </Form.Group> */}
 
                       <Form.Group className="mb-3" controlId="formPassword">
                         <Form.Label>Password</Form.Label>
@@ -208,6 +238,28 @@ const SignUp = () => {
                             {errors.retypedPassword}
                           </Form.Control.Feedback>
                         </InputGroup>
+
+                      {/* <Form.Group className="mb-3" controlId="formTele">
+                        <Form.Label>Telegram</Form.Label>
+                        <InputGroup hasValidation>
+                          <InputGroup.Text id="inputGroupPrepend">
+                            <PhoneFill />
+                          </InputGroup.Text>
+                          <Form.Control
+                            type="text"
+                            placeholder="Telegram handle"
+                            aria-describedby="inputGroupPrepend"
+                            name="tele"
+                            onChange={handleChange}
+                            value={values.tele}
+                            isValid={!errors.tele}
+                            isInvalid={!!errors.tele}
+                          />
+                          <Form.Control.Feedback type="invalid">
+                            {errors.tele}
+                          </Form.Control.Feedback>
+                        </InputGroup>
+                      </Form.Group> */}
                       </Form.Group>
                       {errorMsg !== "" ? (
                         <FailureAlert errorMsg={errorMsg} />

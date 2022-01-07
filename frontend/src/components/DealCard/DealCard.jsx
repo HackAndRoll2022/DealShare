@@ -7,10 +7,10 @@ export default function DealCard({dealCard}) {
     const [dealName, setDealName] = useState();
     
     return (
-        <Card className="DealCard" style={{height:"100%"}}>
-            <Card.Img variant="top" src={dealCard.imgSrc} />
-            {/* <Card.Img variant="top" src="/images/avatar.jpg" /> */}
+        <Card className="DealCard">
+            
             <Card.Body>
+                <Card.Img variant="top" src={dealCard.imgSrc} style ={{height:"20%"}}/>
                 <Card.Title>{dealCard.name}</Card.Title>
                 <Card.Text>{dealCard.startDate}</Card.Text>
                 <Card.Text>{dealCard.endDate}</Card.Text>

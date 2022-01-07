@@ -132,7 +132,7 @@ export default function Profile() {
             Edit
           </Button>
         </div>
-        <AddDealPage/>
+        {/* <AddDealPage/> */}
       </div>
     </>
   );

@@ -1,0 +1,17 @@
+.tab-class .nav-link{
+    color: black;
+}
+
+.tab-class .nav-link:hover {
+    color: black !important;
+    background-color: rgb(250, 250, 240) !important;
+    border-color: white !important;
+    font-weight: 500;
+}
+
+.tab-class .nav-link.active {
+    color: black !important;
+    background-color: rgb(243, 243, 230) !important;
+    border-color: rgb(243, 243, 230) !important;
+    font-weight: bolder;
+}

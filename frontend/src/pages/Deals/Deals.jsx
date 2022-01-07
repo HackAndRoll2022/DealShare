@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef} from "react";
 import { Container, Pagination, Tab, Tabs, Card, Button } from "react-bootstrap";
 import { Navigator } from "../../components/navbar/Navigator";
 import shark from '../../assets/shark.png'
@@ -11,13 +11,12 @@ import Marche from '../../assets/deals/marche.png'
 import Popeyes from '../../assets/deals/popeyes.png'
 import Shakeshack from '../../assets/deals/shakeshack.png'
 import Starbucks from '../../assets/deals/starbucks.png'
-import AddDealPage from "../AddDealPage/AddDealPage";
+// import AddDealPage from "../AddDealPage/AddDealPage";
 import DealCardList from "../../components/DealCardList/DealCardList";
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 import './deals.css'
-import Footer from "../../components/footer/Footer";
 
 const A_LOGOS = [
 {

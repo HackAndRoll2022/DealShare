@@ -54,11 +54,13 @@ import { DEV_API_URL } from "../../api";
 import { FailureAlert } from "../../components/FailureAlert/failurealert";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
-export const LoginForm = ({ history }) => {
+export const LoginForm = () => {
   const [spin, setSpin] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [cookies, setCookie] = useCookies(["userInfo"]);
+  const navigate = useNavigate();
 
   const schema = yup.object({
     username: yup.string().required("Required"),
@@ -69,9 +71,9 @@ export const LoginForm = ({ history }) => {
     const userInfo = cookies.userInfo;
 
     if (userInfo) {
-      history.push("/home");
+      navigate('/')
     }
-  }, [cookies.userInfo, history]);
+  }, [cookies.userInfo, navigate]);
 
   const submitHandler = async (e) => {
     setSpin(true);
@@ -91,16 +93,15 @@ export const LoginForm = ({ history }) => {
         var result = await res.json();
         if (res.status === 200) {
           setErrorMsg("");
-          setCookie("userInfo", JSON.stringify(result), {
+          setCookie("userInfo", JSON.stringify(result.token), {
             path: "/",
             maxAge: 172800, // 2 days per cookie
           });
-          history.push("/home");
-          return result;
+          navigate('/');
         } else {
-          setErrorMsg(result.message);
-          return result.message;
+          setErrorMsg("Wrong username/password");
         }
+        return 
       })
       .then((res) => console.log(res))
       .catch((err) => {

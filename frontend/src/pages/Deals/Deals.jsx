@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Container, Pagination, Tab, Tabs, Card, Button, Modal, Spinner } from "react-bootstrap";
+import { Container, Pagination, Tab, Tabs, Card, Button, Modal, Spinner, Form, FloatingLabel } from "react-bootstrap";
 import { Navigator } from "../../components/navbar/Navigator";
 import shark from '../../assets/shark.png'
 import Collins from '../../assets/deals/collins.png'
@@ -152,12 +152,13 @@ const PastMatchesModal = () => {
       <Button variant="primary" onClick={handleShow}>
         View past matchees
       </Button>
-      <Modal show={show} onHide={handleClose} centered>
-        <Modal.Header>
+      <Modal show={show} onHide={handleClose} centered >
+        <Modal.Header closeButton>
           <Modal.Title>Past Matchees </Modal.Title>
         </Modal.Header>
         <Modal.Body >
           <div className="tw-flex tw-flex-col">
+          <h5 className="mb-4">Location: Central</h5>
           <p> 1. Jogn Doe, <strong>98764963</strong></p>
           <p> 2. Jane Di, <strong>85553963</strong></p>
           <p> 3. Tim Jake, <strong>92556563</strong></p>
@@ -235,6 +236,19 @@ const Deals = () => {
                       <Card.Text>
                         {item.description}
                       </Card.Text>
+                      <Form.Group className="mb-3">
+                      <Form.Label className="tw-font-bold">Location</Form.Label>
+                      <Form.Select>
+                        <option>Central</option>
+                        <option>North</option>
+                        <option>South</option>
+                        <option>East</option>
+                        <option>West</option>
+                      </Form.Select>
+                      </Form.Group>
+                      <Card.Text className="text-muted tw-font-normal">
+                        Pax: {item.pax}
+                      </Card.Text>
                       <MatchModal/>
                     </Card.Body>
                     <Card.Footer>
@@ -257,6 +271,19 @@ const Deals = () => {
                       <Card.Text>
                         {item.description}
                       </Card.Text>
+                      <Form.Group className="mb-3">
+                      <Form.Label className="tw-font-bold">Location</Form.Label>
+                      <Form.Select>
+                        <option>Central</option>
+                        <option>North</option>
+                        <option>South</option>
+                        <option>East</option>
+                        <option>West</option>
+                      </Form.Select>
+                      </Form.Group>
+                      <Card.Text className="text-muted tw-font-normal">
+                        Pax: {item.pax}
+                      </Card.Text>
                       <MatchModal/>
                     </Card.Body>
                     <Card.Footer>
@@ -277,6 +304,19 @@ const Deals = () => {
                       <Card.Title>{item.type}</Card.Title>
                       <Card.Text>
                         {item.description}
+                      </Card.Text>
+                      <Form.Group className="mb-3">
+                      <Form.Label className="tw-font-bold">Location</Form.Label>
+                      <Form.Select>
+                        <option>Central</option>
+                        <option>North</option>
+                        <option>South</option>
+                        <option>East</option>
+                        <option>West</option>
+                      </Form.Select>
+                      </Form.Group>
+                      <Card.Text className="text-muted tw-font-normal">
+                        Pax: {item.pax}
                       </Card.Text>
                       <MatchModal/>
                     </Card.Body>
@@ -308,7 +348,7 @@ const Deals = () => {
           <div className="tw-flex tw-flex-col tw-gap-8 tw-mx-auto">
           <div className="tw-flex tw-flex-col tw-justify-center tw-items-center">
                 <p className="tw-font-semibold tw-text-m" > Missing out on any irresistable deals? Let's get right back into the game! </p>
-                <Button variant="outline-success" size="sm"> Create deal!</Button>
+                <Button variant="outline-success" size="sm" href="/add"> Create deal!</Button>
               </div>
           <div className="tw-flex tw-flex-row tw-gap-20 ">
             

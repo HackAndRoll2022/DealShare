@@ -3,12 +3,18 @@
 ## Stack
 ### Frontend
 - React
-- Bootstrap
+- Bootstrap & icons
 - Tailwind CSS (prefixed with `tw-`)
+- Material UI/Icons (not used as much)
 
 ### Backend
-- Nodejs/Express
+- Python
+- FastAPI
 - MongoDB
+
+### Deployment
+- Heroku
 
 ### Assets
 - unDraw for vectors
+- flaticon.com for svg icons

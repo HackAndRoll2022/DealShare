@@ -11,6 +11,7 @@ origins = [
     "http://localhost:3000",
     "http://localhost:5000",
     "https://dealshare22.herokuapp.com",
+    "https://dealshare-337601.de.r.appspot.com",
 ]
 
 app.add_middleware(

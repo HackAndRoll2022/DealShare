@@ -149,14 +149,14 @@ export default function Profile() {
         <input accept="image/*" id="icon-button-file"
           type="file" onChange={handleChange} disabled={state} style={{ display: 'none' }} />
         <label htmlFor="icon-button-file">
-          <IconButton edge="start" color="primary" aria-label="upload picture" component="span" disabled={state} >
+          <IconButton edge="start" color="primary" aria-label="upload picture" component="span" disabled={state} style={{margin:"15px"}} >
             <PhotoCamera style={{ height: "25%", width: "25%"}} />
           </IconButton>
         </label>
-        <TextField className="mb-5" id="name" label="Name" variant="outlined" size='medium' style={{ width: 500 }}/>
-        <TextField className="mb-5" id="phone" label="Phone Number" variant="outlined" size='medium' style={{ width: 500 }}/>
-        <TextField className="mb-5" id="tele" label="Telegram Handle" variant="outlined" size='medium' style={{ width: 500 }}/>
-        <TextField className="mb-5" id="location" label="Location" variant="outlined" size='medium' style={{ width: 500 }}/>
+        <TextField className="mb-5" id="name" label="Name" variant="outlined" size='medium' style={{ width: 500 }} input value={name} onChange={handleNameTextInput} disabled={state}/>
+        <TextField className="mb-5" id="phone" label="Phone Number" variant="outlined" size='medium' style={{ width: 500 }} input value={phone} onChange={handlePhoneTextInput} disabled={state}/>
+        <TextField className="mb-5" id="tele" label="Telegram Handle" variant="outlined" size='medium' style={{ width: 500 }} input value={telegram} onChange={handleTelegramTextInput} disabled={state}/>
+        <TextField className="mb-5" id="location" label="Location" variant="outlined" size='medium' style={{ width: 500 }} disabled={state}/>
         <Button variant="contained" color="secondary" component="span" onClick={changeAllUIStates} style={{ width: 200}}>
             Edit
           </Button>

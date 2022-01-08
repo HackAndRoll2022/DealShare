@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e93c9696.css",
+    "main.js": "/static/js/main.9b613b1b.js",
+    "static/media/starbucks.png": "/static/media/starbucks.038e82bf0c268456bffc.png",
+    "static/media/popeyes.png": "/static/media/popeyes.57b573b80ec2692c36ca.png",
+    "static/media/gong-cha.png": "/static/media/gong-cha.b88ec4912991eff8741d.png",
+    "static/media/shakeshack.png": "/static/media/shakeshack.ff6495359d909a96dfb8.png",
+    "static/media/shark.png": "/static/media/shark.ffefb1f5e318e8e1f1c2.png",
+    "static/media/error.png": "/static/media/error.f1b5ef4bb2906e02f567.png",
+    "static/media/kfc.png": "/static/media/kfc.b9cd234e0e60b1ed0921.png",
+    "static/media/teamwork.svg": "/static/media/teamwork.d725c101b410fbe51ea71f5460dcd777.svg",
+    "static/media/kith.png": "/static/media/kith.e4486e9042e3154c3443.png",
+    "static/media/macs.png": "/static/media/macs.e59d619ddd73e41079a5.png",
+    "static/media/collins.png": "/static/media/collins.48a127234034a92b6e0b.png",
+    "static/media/signup-welcome.svg": "/static/media/signup-welcome.5361bb8f5f03c6fb06034ef0f67d51f9.svg",
+    "static/media/login.svg": "/static/media/login.2f2e4e489a4ed2b265338fcc1dbeb1a7.svg",
+    "index.html": "/index.html",
+    "main.e93c9696.css.map": "/static/css/main.e93c9696.css.map",
+    "main.9b613b1b.js.map": "/static/js/main.9b613b1b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e93c9696.css",
+    "static/js/main.9b613b1b.js"
+  ]
+}

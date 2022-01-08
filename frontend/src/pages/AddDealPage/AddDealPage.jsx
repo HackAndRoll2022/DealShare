@@ -1,12 +1,39 @@
 import React, { useState } from "react";
 import DealCardList from "../../components/DealCardList/DealCardList";
-import { Button } from "react-bootstrap"
+import { Button, Modal } from "react-bootstrap"
 import { IconButton, TextField } from '@material-ui/core';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 // import { Hidden } from '@material-ui/core';
 import { Navigator } from "../../components/navbar/Navigator";
 import Footer from "../../components/footer/Footer";
 import { useNavigate } from "react-router-dom";
+
+const AddDealModal = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow} style={{ 'width': 200 }}>
+        Add Deal
+      </Button>
+      <Modal show={show} onHide={handleClose} centered backdrop="static"
+        keyboard={false}>
+        <Modal.Header>
+          <Modal.Title>Success! </Modal.Title>
+        </Modal.Header>
+        <Modal.Body >
+          <h5> The deal has been posted successfully to the DealShare team for verification.</h5>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" href="/home">Close</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
 
 const AddDealPage = () => {
     const [dealCardList, setDealCardList] = useState([]);
@@ -57,7 +84,8 @@ const AddDealPage = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              margin: "20px",
+              marginTop: "50px",
+              marginBottom: "50px",
             }}
           >
             <IconButton
@@ -122,7 +150,8 @@ const AddDealPage = () => {
                 alignContent: "center",
               }}
             >
-              <Button onClick={addDeal}>Add deal</Button>
+              <AddDealModal />
+              {/* <Button onClick={addDeal}>Add deal</Button> */}
             </div>
           </div>
         </div>
